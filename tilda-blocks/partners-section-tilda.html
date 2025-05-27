@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .t123__container * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .partners-section {
+            padding: 40px 15px 60px;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            font-family: 'Montserrat', 'Arial', sans-serif;
+            width: 100%;
+        }
+        
+        .partners-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .partners-title {
+            text-align: center;
+            font-size: clamp(24px, 4vw, 32px);
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        
+        .partners-subtitle {
+            text-align: center;
+            font-size: clamp(16px, 3vw, 18px);
+            color: #64748b;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+        
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+        
+        .partner-card {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .partner-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+        }
+        
+        .partner-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .partner-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .partner-info h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 2px;
+            line-height: 1.3;
+        }
+        
+        .partner-category {
+            color: #64748b;
+            font-size: 12px;
+        }
+        
+        .partner-description {
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .promo-section {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .promo-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #92400e;
+            margin-bottom: 8px;
+        }
+        
+        .promo-code {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            border-radius: 8px;
+            padding: 10px 12px;
+            margin-bottom: 10px;
+        }
+        
+        .promo-text {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e293b;
+            letter-spacing: 0.5px;
+        }
+        
+        .promo-copy {
+            background: #f59e0b;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        .promo-discount {
+            color: #92400e;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .partner-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .partner-button {
+            flex: 1;
+            padding: 12px 8px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            display: block;
+            font-size: 13px;
+        }
+        
+        .primary-button {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+        
+        .secondary-button {
+            background: #f1f5f9;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .new-badge { background: #10b981; }
+        .popular-badge { background: #f59e0b; }
+        
+        @media (max-width: 768px) {
+            .partners-section { padding: 30px 10px 40px; }
+            .partners-grid { grid-template-columns: 1fr; gap: 20px; }
+            .partner-card { padding: 20px; }
+            .partner-actions { flex-direction: column; }
+        }
+        
+        @media (max-width: 480px) {
+            .partners-section { padding: 20px 5px 30px; }
+            .partner-card { padding: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="partners-section">
+        <div class="partners-container">
+            <h2 class="partners-title">Партнерские предложения</h2>
+            <p class="partners-subtitle">Эксклюзивные скидки от наших партнеров специально для вас</p>
+            
+            <div class="partners-grid" id="partnersGrid">
+                <!-- Партнеры будут добавлены через JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const partners = [
+            {
+                id: 1, name: 'ФитнесПро', category: 'Фитнес и спорт', logo: 'FP',
+                description: 'Современный фитнес-клуб с профессиональными тренерами.',
+                promoCode: 'HEALTH2024', discount: 'Скидка 20% на первый месяц',
+                website: 'https://fitnesspro.example.com', badge: 'new'
+            },
+            {
+                id: 2, name: 'Органик Маркет', category: 'Здоровое питание', logo: 'OM',
+                description: 'Магазин натуральных и органических продуктов.',
+                promoCode: 'CLINIC15', discount: 'Скидка 15% на весь ассортимент',
+                website: 'https://organicmarket.example.com', badge: 'popular'
+            },
+            {
+                id: 3, name: 'СПА Релакс', category: 'Красота и здоровье', logo: 'SR',
+                description: 'Премиальный СПА-центр с оздоровительными процедурами.',
+                promoCode: 'WELLNESS25', discount: 'Скидка 25% на массаж',
+                website: 'https://sparelax.example.com', badge: null
+            }
+        ];
+
+        function getBadgeClass(badgeType) {
+            return badgeType ? `badge ${badgeType}-badge` : '';
+        }
+
+        function getBadgeText(badgeType) {
+            return badgeType === 'new' ? 'Новое' : badgeType === 'popular' ? 'Популярное' : '';
+        }
+
+        function copyPromoCode(code) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(code).then(() => {
+                    showNotification(`Промокод ${code} скопирован!`);
+                });
+            } else {
+                const textArea = document.createElement('textarea');
+                textArea.value = code;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showNotification(`Промокод ${code} скопирован!`);
+            }
+        }
+
+        function openPartnerSite(url) {
+            window.open(url, '_blank');
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed; top: 20px; right: 20px; background: #10b981; color: white;
+                padding: 12px 20px; border-radius: 8px; z-index: 10000; font-weight: 600;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 3000);
+        }
+
+        function renderPartners() {
+            const grid = document.getElementById('partnersGrid');
+            grid.innerHTML = partners.map(partner => `
+                <div class="partner-card">
+                    ${partner.badge ? `<div class="${getBadgeClass(partner.badge)}">${getBadgeText(partner.badge)}</div>` : ''}
+                    <div class="partner-header">
+                        <div class="partner-logo">${partner.logo}</div>
+                        <div class="partner-info">
+                            <h3>${partner.name}</h3>
+                            <div class="partner-category">${partner.category}</div>
+                        </div>
+                    </div>
+                    <p class="partner-description">${partner.description}</p>
+                    <div class="promo-section">
+                        <div class="promo-label">Промокод для скидки:</div>
+                        <div class="promo-code">
+                            <span class="promo-text">${partner.promoCode}</span>
+                            <button class="promo-copy" onclick="copyPromoCode('${partner.promoCode}')">📋</button>
+                        </div>
+                        <div class="promo-discount">${partner.discount}</div>
+                    </div>
+                    <div class="partner-actions">
+                        <button class="partner-button primary-button" onclick="openPartnerSite('${partner.website}')">Перейти на сайт</button>
+                        <button class="partner-button secondary-button" onclick="copyPromoCode('${partner.promoCode}')">Скопировать код</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', renderPartners);
+        } else {
+            renderPartners();
+        }
+    </script>
+</body>
+</html>
