@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .discount-section {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        .discount-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .discount-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 16px;
+        }
+        
+        .discount-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #64748b;
+            margin-bottom: 48px;
+        }
+        
+        .discount-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+        
+        .discount-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .discount-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+        
+        .discount-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: linear-gradient(135deg, #9b87f5 0%, #7c3aed 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 0 16px 0 16px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .discount-percent {
+            font-size: 48px;
+            font-weight: 800;
+            color: #9b87f5;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        
+        .discount-service {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 12px;
+        }
+        
+        .discount-description {
+            color: #64748b;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+        
+        .discount-validity {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #f59e0b;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        
+        .discount-button {
+            width: 100%;
+            background: linear-gradient(135deg, #9b87f5 0%, #7c3aed 100%);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .discount-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(124, 58, 237, 0.3);
+        }
+        
+        .used-label {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        .used-label .discount-button {
+            background: #e2e8f0;
+            color: #64748b;
+        }
+        
+        @media (max-width: 768px) {
+            .discount-section {
+                padding: 40px 16px;
+            }
+            
+            .discount-title {
+                font-size: 24px;
+            }
+            
+            .discount-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="discount-section">
+        <div class="discount-container">
+            <h2 class="discount-title">Ваши персональные скидки</h2>
+            <p class="discount-subtitle">Специальные предложения только для вас</p>
+            
+            <div class="discount-grid" id="discountGrid">
+                <!-- Скидки будут добавлены через JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const discounts = [
+            {
+                id: 1,
+                percent: 25,
+                service: 'Консультация терапевта',
+                description: 'Первичная консультация специалиста с полным обследованием',
+                validUntil: '2024-12-31',
+                isUsed: false,
+                badge: 'Новое'
+            },
+            {
+                id: 2,
+                percent: 15,
+                service: 'Лабораторные анализы',
+                description: 'Базовый пакет анализов крови и мочи',
+                validUntil: '2024-11-30',
+                isUsed: false,
+                badge: 'Популярное'
+            },
+            {
+                id: 3,
+                percent: 30,
+                service: 'УЗИ диагностика',
+                description: 'УЗИ органов брюшной полости',
+                validUntil: '2024-10-15',
+                isUsed: true,
+                badge: 'Использовано'
+            }
+        ];
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('ru-RU', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+        }
+
+        function calculateDaysLeft(dateString) {
+            const today = new Date();
+            const endDate = new Date(dateString);
+            const diffTime = endDate - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            return diffDays;
+        }
+
+        function renderDiscounts() {
+            const grid = document.getElementById('discountGrid');
+            
+            grid.innerHTML = discounts.map(discount => {
+                const daysLeft = calculateDaysLeft(discount.validUntil);
+                const isExpired = daysLeft < 0;
+                const cardClass = discount.isUsed || isExpired ? 'discount-card used-label' : 'discount-card';
+                
+                return `
+                    <div class="${cardClass}">
+                        <div class="discount-badge">${discount.badge}</div>
+                        <div class="discount-percent">${discount.percent}%</div>
+                        <div class="discount-service">${discount.service}</div>
+                        <p class="discount-description">${discount.description}</p>
+                        <div class="discount-validity">
+                            🕒 Действует до ${formatDate(discount.validUntil)}
+                            ${!discount.isUsed && !isExpired ? ` (осталось ${daysLeft} дн.)` : ''}
+                        </div>
+                        <button class="discount-button" onclick="useDiscount(${discount.id})" 
+                                ${discount.isUsed || isExpired ? 'disabled' : ''}>
+                            ${discount.isUsed ? 'Использовано' : isExpired ? 'Истекло' : 'Использовать скидку'}
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function useDiscount(discountId) {
+            const discount = discounts.find(d => d.id === discountId);
+            if (discount && !discount.isUsed) {
+                // Здесь можно добавить отправку данных на сервер
+                alert(`Скидка "${discount.service}" активирована! Обратитесь к администратору для записи.`);
+                
+                discount.isUsed = true;
+                renderDiscounts();
+            }
+        }
+
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', renderDiscounts);
+    </script>
+</body>
+</html>

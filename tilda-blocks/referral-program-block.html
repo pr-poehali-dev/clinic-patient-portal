@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .referral-section {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        .referral-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .referral-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 16px;
+        }
+        
+        .referral-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #64748b;
+            margin-bottom: 48px;
+        }
+        
+        .referral-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .stat-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+            display: block;
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            color: #9b87f5;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            color: #64748b;
+            font-size: 14px;
+        }
+        
+        .referral-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .referral-code-section {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        
+        .referral-code-label {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 12px;
+        }
+        
+        .referral-code {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #9b87f5 0%, #7c3aed 100%);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .copy-button {
+            background: white;
+            color: #9b87f5;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-button:hover {
+            background: #f8fafc;
+        }
+        
+        .referral-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px;
+            background: #faf5ff;
+            border-radius: 12px;
+        }
+        
+        .benefit-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .benefit-content h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+        
+        .benefit-content p {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .share-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .share-whatsapp {
+            background: #25d366;
+            color: white;
+        }
+        
+        .share-telegram {
+            background: #0088cc;
+            color: white;
+        }
+        
+        .share-copy {
+            background: #e2e8f0;
+            color: #1e293b;
+        }
+        
+        .share-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .referral-section {
+                padding: 40px 16px;
+            }
+            
+            .referral-title {
+                font-size: 24px;
+            }
+            
+            .referral-card {
+                padding: 24px;
+            }
+            
+            .referral-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="referral-section">
+        <div class="referral-container">
+            <h2 class="referral-title">Программа "Приведи друга"</h2>
+            <p class="referral-subtitle">Получайте бонусы за каждого приведенного друга</p>
+            
+            <div class="referral-stats">
+                <div class="stat-card">
+                    <span class="stat-icon">👥</span>
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Приведено друзей</div>
+                </div>
+                
+                <div class="stat-card">
+                    <span class="stat-icon">💰</span>
+                    <div class="stat-number">3600</div>
+                    <div class="stat-label">Заработано рублей</div>
+                </div>
+                
+                <div class="stat-card">
+                    <span class="stat-icon">🎯</span>
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Активных рефералов</div>
+                </div>
+                
+                <div class="stat-card">
+                    <span class="stat-icon">⭐</span>
+                    <div class="stat-number">Gold</div>
+                    <div class="stat-label">Статус в программе</div>
+                </div>
+            </div>
+            
+            <div class="referral-card">
+                <div class="referral-code-section">
+                    <div class="referral-code-label">Ваш реферальный код:</div>
+                    <div class="referral-code">
+                        PATIENT2024
+                        <button class="copy-button" onclick="copyReferralCode()">📋</button>
+                    </div>
+                </div>
+                
+                <div class="referral-benefits">
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🎁</span>
+                        <div class="benefit-content">
+                            <h4>300₽ за друга</h4>
+                            <p>Получайте бонус за каждого нового пациента</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <span class="benefit-icon">💎</span>
+                        <div class="benefit-content">
+                            <h4>15% скидка другу</h4>
+                            <p>Ваш друг получит скидку на первый визит</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="share-buttons">
+                    <a href="#" class="share-button share-whatsapp" onclick="shareWhatsApp()">
+                        📱 WhatsApp
+                    </a>
+                    <a href="#" class="share-button share-telegram" onclick="shareTelegram()">
+                        ✈️ Telegram
+                    </a>
+                    <button class="share-button share-copy" onclick="copyReferralLink()">
+                        📋 Копировать ссылку
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const referralCode = 'PATIENT2024';
+        const clinicName = 'Наша Клиника';
+        const referralText = `🏥 Привет! Рекомендую отличную клинику "${clinicName}". 
+При записи используй мой код ${referralCode} и получи скидку 15%! 
+Качественное обслуживание и профессиональные врачи.`;
+
+        function copyReferralCode() {
+            navigator.clipboard.writeText(referralCode).then(() => {
+                showNotification('Код скопирован!');
+            });
+        }
+
+        function copyReferralLink() {
+            const link = `${window.location.origin}?ref=${referralCode}`;
+            navigator.clipboard.writeText(link).then(() => {
+                showNotification('Ссылка скопирована!');
+            });
+        }
+
+        function shareWhatsApp() {
+            const url = `https://wa.me/?text=${encodeURIComponent(referralText)}`;
+            window.open(url, '_blank');
+        }
+
+        function shareTelegram() {
+            const url = `https://t.me/share/url?text=${encodeURIComponent(referralText)}`;
+            window.open(url, '_blank');
+        }
+
+        function showNotification(message) {
+            // Простое уведомление
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #10b981;
+                color: white;
+                padding: 12px 20px;
+                border-radius: 8px;
+                z-index: 1000;
+                font-weight: 600;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Анимация чисел при загрузке
+        function animateNumbers() {
+            const numbers = document.querySelectorAll('.stat-number');
+            numbers.forEach(num => {
+                const value = num.textContent;
+                if (!isNaN(value)) {
+                    let current = 0;
+                    const target = parseInt(value);
+                    const increment = target / 50;
+                    
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        num.textContent = Math.floor(current);
+                    }, 30);
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', animateNumbers);
+    </script>
+</body>
+</html>
